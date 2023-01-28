@@ -3,7 +3,6 @@ const express = require('express')
 const app = express()
 const http = require('http')
 const Enmap = require('enmap');
-const axios = require('axios');
 
 // Twitch API
 const client = new tmi.Client({
@@ -39,15 +38,9 @@ app.db.set("parametros", "null")
 
 app.get('*', function (req, res) {
     const parameters = app.db.get("parametros")
-    if (parameters === "null") {
-        res.render("index", {
-            params: parameters
-        })
-    } else {
-        res.render("index", {
-            params: parameters
-        })
-    }
+    res.render("index", {
+        params: parameters
+    })
 });
 
 const httpServer = http.createServer(app);
