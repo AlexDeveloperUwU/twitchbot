@@ -3,7 +3,20 @@ const express = require('express')
 const app = express()
 const http = require('http')
 const Enmap = require('enmap');
+const axios = require('axios');
 
+// Twitch API
+const client = new tmi.Client({
+	channels: [ 'AlexDevUwU' ]
+});
+
+client.connect();
+
+client.on('message', (channel, tags, message, self) => {
+	console.log(`${tags['display-name']}: ${message}`);
+});
+
+// Página web
 app.set('port', process.env.PORT || 80)
 
 app.use(express.json())
