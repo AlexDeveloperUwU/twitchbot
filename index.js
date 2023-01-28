@@ -7,13 +7,13 @@ const axios = require('axios');
 
 // Twitch API
 const client = new tmi.Client({
-	channels: [ 'AlexDevUwU' ]
+    channels: ['AlexDevUwU']
 });
 
 client.connect();
 
 client.on('message', (channel, tags, message, self) => {
-	console.log(`${tags['display-name']}: ${message}`);
+    console.log(`${tags['display-name']}: ${message}`);
 });
 
 // Página web
